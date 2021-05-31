@@ -1,0 +1,18 @@
+{
+	"name": "DVFCosmos",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputCosmosDb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Input"
+		},
+		"annotations": [],
+		"type": "CosmosDbMongoDbApiCollection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "mutation"
+		}
+	}
+}
