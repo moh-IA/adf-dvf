@@ -1,0 +1,27 @@
+{
+	"name": "DVF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputAdlsGen2",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Output"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dvf.csv",
+				"folderPath": "Raw",
+				"fileSystem": "dvf-root"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
