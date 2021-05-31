@@ -226,7 +226,8 @@
 									"ordinal": 24
 								}
 							}
-						]
+						],
+						"mapComplexValuesToString": false
 					}
 				},
 				"inputs": [
