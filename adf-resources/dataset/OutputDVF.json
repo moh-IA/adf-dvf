@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "dvf.csv",
 				"folderPath": "Raw",
 				"fileSystem": "dvf-root"
 			},
