@@ -1,0 +1,252 @@
+{
+	"name": "CosmosToADLSGen2",
+	"properties": {
+		"activities": [
+			{
+				"name": "CosmosDB To Csv",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "CosmosDbMongoDbApiSource",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"name": "$oid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['No disposition']"
+								},
+								"sink": {
+									"name": "No disposition"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Date mutation']"
+								},
+								"sink": {
+									"name": "Date mutation"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Nature mutation']"
+								},
+								"sink": {
+									"name": "Nature mutation"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Valeur fonciere']"
+								},
+								"sink": {
+									"name": "Valeur fonciere"
+								}
+							},
+							{
+								"source": {
+									"path": "$['No voie']"
+								},
+								"sink": {
+									"name": "No voie"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Type de voie']"
+								},
+								"sink": {
+									"name": "Type de voie"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Code voie']"
+								},
+								"sink": {
+									"name": "Code voie"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Voie']"
+								},
+								"sink": {
+									"name": "Voie"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Code postal']"
+								},
+								"sink": {
+									"name": "Code postal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Commune']"
+								},
+								"sink": {
+									"name": "Commune"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Code departement']"
+								},
+								"sink": {
+									"name": "Code departement"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Code commune']"
+								},
+								"sink": {
+									"name": "Code commune"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Section']"
+								},
+								"sink": {
+									"name": "Section"
+								}
+							},
+							{
+								"source": {
+									"path": "$['No plan']"
+								},
+								"sink": {
+									"name": "No plan"
+								}
+							},
+							{
+								"source": {
+									"path": "$['1er lot']"
+								},
+								"sink": {
+									"name": "1er lot"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Surface Carrez du 1er lot']"
+								},
+								"sink": {
+									"name": "Surface Carrez du 1er lot"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Nombre de lots']"
+								},
+								"sink": {
+									"name": "Nombre de lots"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Code type local']"
+								},
+								"sink": {
+									"name": "Code type local"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Type local']"
+								},
+								"sink": {
+									"name": "Type local"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Surface reelle bati']"
+								},
+								"sink": {
+									"name": "Surface reelle bati"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Nombre pieces principales']"
+								},
+								"sink": {
+									"name": "Nombre pieces principales"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Nature culture']"
+								},
+								"sink": {
+									"name": "Nature culture",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Surface terrain']"
+								},
+								"sink": {
+									"name": "Surface terrain"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DVFCosmos",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DVF",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DataIngestion"
+		},
+		"annotations": []
+	}
+}
